@@ -1,0 +1,37 @@
+CreateCharacterIntent make a character
+CreateCharacterIntent make a new character
+CreateCharacterIntent roll a character
+CreateCharacterIntent roll a new character
+
+CreateRaceCharacterIntent make a {Race}
+CreateRaceCharacterIntent make an {Race}
+CreateRaceCharacterIntent make a new {Race}
+CreateRaceCharacterIntent roll a {Race}
+CreateRaceCharacterIntent roll an {Race}
+CreateRaceCharacterIntent roll a new {Race}
+
+CreateClassCharacterIntent make a {Class}
+CreateClassCharacterIntent make an {Class}
+CreateClassCharacterIntent make a new {Class}
+CreateClassCharacterIntent roll a {Class}
+CreateClassCharacterIntent roll an {Class}
+CreateClassCharacterIntent roll a new {Class}
+
+LookupSpellIntent how does {Spell} work
+LookupSpellIntent tell me about {Spell}
+LookupSpellIntent explain {Spell}
+LookupSpellIntent what is {Spell}
+LookupSpellIntent what's {Spell}
+LookupSpellIntent define {Spell}
+LookupSpellIntent {Spell}
+
+LookupRuleIntent how does {Rule} work
+LookupRuleIntent tell me about {Rule}
+LookupRuleIntent explain {Rule}
+LookupRuleIntent {Rule}
+
+LookupSaveIntent {Save} {Level} {Class}
+LookupSaveIntent what is the save vs. {Save} for a level {Level} {Class}
+LookupSaveIntent what's the save vs. {Save} for a level {Level} {Class}
+LookupSaveIntent what is save vs. {Save} for a level {Level} {Class}
+LookupSaveIntent what's save vs. {Save} for a level {Level} {Class}
