@@ -1,8 +1,8 @@
-(defproject basic_fantasy "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+(defproject bf_helper "1.0.0-SNAPSHOT"
+  :description "An Alexa Skill to help Basic Fantasy RPG players with various tasks involved in setting up characters and navigating rules."
+  :url "https://github.com/JeffEngebretsen/bf-helper"
+  :license {:name "The MIT License"
+            :url "http://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [com.amazonaws/aws-lambda-java-core "1.0.0"]
                  [com.amazonaws/aws-lambda-java-log4j "1.0.0"]
@@ -15,5 +15,5 @@
                  [com.fasterxml.jackson.core/jackson-core "2.6.3"]
                  [com.fasterxml.jackson.core/jackson-databind "2.6.3"]]
   :target-path "target/%s"
-  :main basic-fantasy.core
+  :main bf-helper.core
   :profiles {:uberjar {:aot :all}})

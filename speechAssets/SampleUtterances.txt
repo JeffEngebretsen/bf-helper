@@ -1,7 +1,11 @@
 CreateCharacterIntent make a character
 CreateCharacterIntent make a new character
+CreateCharacterIntent make me a character
+CreateCharacterIntent make me a new character
 CreateCharacterIntent roll a character
+CreateCharacterIntent roll me a character
 CreateCharacterIntent roll a new character
+CreateCharacterIntent roll me a new character
 
 CreateRaceCharacterIntent make a {Race}
 CreateRaceCharacterIntent make an {Race}

@@ -1,6 +1,6 @@
 # BF Helper
 
-This Alexa Sill helps Basic Fantasy RPG players with various tasks involved in setting up characters and navigating rules.
+An Alexa Skill to help Basic Fantasy RPG players with various tasks involved in setting up characters and navigating rules.
 
 
 ## License

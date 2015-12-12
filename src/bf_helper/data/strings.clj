@@ -1,4 +1,4 @@
-(def strings {:dwarf "a dwaven"
+(def strings {:dwarf "a dwarven"
               :halfling "a halfling"
               :elf "an elven"
               :human "a human"

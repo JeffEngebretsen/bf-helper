@@ -19,5 +19,5 @@
            :hit-die 4
            :weapons [:any]
            :armor [:leather]
-           :special-abilities [:steak-attack]}})
+           :special-abilities [:sneak-attack]}})
 
