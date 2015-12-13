@@ -76,7 +76,7 @@
              :thief (:class character)
              {:str 1 :dex 2 :con 1 :int -1 :wis 2 :cha 0} (:ability-modifiers character)
              nil (:race-abilities character)
-             [:steak-attack] (:class-abilities character)
+             [:sneak-attack] (:class-abilities character)
              1 (:attack-bonus character)
              {:death-ray 4
               :magic-wands 4
