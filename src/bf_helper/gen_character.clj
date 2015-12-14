@@ -87,11 +87,12 @@
 
 (defn make-character-race
   [race]
-  (let [ability-scores (make-abilities)
+  (if (races race)
+    (let [ability-scores (make-abilities)
          valid-races (filter-races ability-scores)]
     (if (some #{race} valid-races)
       (make-character :race race :ability-scores ability-scores)
-      (recur race))))
+      (recur race)))))
 
 (defn- get-stats-for-races
   [race-keys]
@@ -100,11 +101,12 @@
 ;TODO support mixed classes
 (defn make-character-class
   [clazz]
-  (let [[ab f n] (get-in classes [clazz :requirement])
+  (if (classes clazz)
+    (let [[ab f n] (get-in classes [clazz :requirement])
         valid-races (get-stats-for-races (filter-races-by-class clazz))]
     (loop [ability-scores (make-abilities)]
       (if (f (ab ability-scores) n)
         (make-character :ability-scores ability-scores
                         :clazz clazz
                         :race (gen/rand-nth (filter-races valid-races ability-scores)))
-        (recur (make-abilities))))))
+        (recur (make-abilities)))))))

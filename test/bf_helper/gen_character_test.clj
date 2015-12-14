@@ -102,5 +102,12 @@
       (let [character (make-character-class :thief)]
         (is (= :thief (:class character)))))))
 
+
+(deftest can-handle-invalid-class
+    (is (nil? (make-character-class :paladin))))
+
+(deftest can-handle-invalid-race
+    (is (nil? (make-character-race :gnome))))
+
 (run-tests)
 ;(map #(ns-unmap *ns* %) (keys (ns-interns *ns*)))

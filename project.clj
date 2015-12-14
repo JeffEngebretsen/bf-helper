@@ -1,4 +1,4 @@
-(defproject bf_helper "1.1.0-SNAPSHOT"
+(defproject bf_helper "1.1.1-SNAPSHOT"
   :description "An Alexa Skill to help Basic Fantasy RPG players with various tasks involved in setting up characters and navigating rules."
   :url "https://github.com/JeffEngebretsen/bf-helper"
   :license {:name "The MIT License"

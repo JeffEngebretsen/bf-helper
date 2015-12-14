@@ -1,6 +1,5 @@
 (ns bf-helper.intent-router
-  (:require [clojure.tools.logging :as log]
-            [bf-helper.gen-character :as c-gen]
+  (:require [bf-helper.gen-character :as c-gen]
             [bf-helper.formatter :as formatter]
             [clojure.data.generators :as gen])
   (:import (com.amazon.speech.ui PlainTextOutputSpeech SimpleCard)
@@ -27,6 +26,8 @@
   (doto (new PlainTextOutputSpeech)
     (.setText text)))
 
+(def error-response (SpeechletResponse/newTellResponse (make-plain-text-output-speech "I'm sorry, I don't know how to do that.")))
+
 (defn make-simple-card
   [title content]
   (doto (new SimpleCard)
@@ -45,22 +46,22 @@
 (defn create-character
   [_]
   (binding [gen/*rnd* (java.util.Random.)]
-    (-> (c-gen/make-character)
-        (bundle-character))))
+    (let [character (c-gen/make-character)]
+      (bundle-character character))))
 
 (defn create-race-character
   [{race :race}]
   (binding [gen/*rnd* (java.util.Random.)]
-    (-> race
-        (c-gen/make-character-race)
-        (bundle-character))))
+    (if-let [character (c-gen/make-character-race race)]
+      (bundle-character character)
+      error-response)))
 
 (defn create-class-character
   [{clazz :class}]
   (binding [gen/*rnd* (java.util.Random.)]
-    (-> clazz
-        (c-gen/make-character-class)
-        (bundle-character))))
+    (if-let [character (c-gen/make-character-class clazz)]
+      (bundle-character character)
+      error-response)))
 
 (def intent->f {"CreateCharacterIntent" create-character
                 "CreateRaceCharacterIntent" create-race-character
@@ -78,5 +79,4 @@
   [i-name i-slots]
   (let [f (intent->f i-name)
         slots (slots->map i-slots)]
-    (log/info (format "Intent: %s Slots: %s" i-name slots))
     (f slots)))
