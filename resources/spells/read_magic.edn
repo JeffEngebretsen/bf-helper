@@ -1,0 +1,5 @@
+[:read-magic {:name "Read Magic"
+              :range 0
+              :duration "permanent"
+              :magic-user-level 1
+              :description "When cast upon any magical text, such as a spellbook or magic-user spell scroll, Read Magic enables the caster to read that text. Casting this spell on a cursed text will generally trigger the curse."}]

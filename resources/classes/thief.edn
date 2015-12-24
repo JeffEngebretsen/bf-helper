@@ -1,0 +1,6 @@
+[:thief {:name "Thief"
+         :requirement [:dex >= 9]
+         :hit-die 4
+         :weapons [:any]
+         :armor [:leather]
+         :special-abilities [:sneak-attack]}]

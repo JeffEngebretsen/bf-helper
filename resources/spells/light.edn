@@ -1,0 +1,10 @@
+[:light {:name "Light"
+         :range "120'"
+         :duration "6 + level turns"
+         :magic-user-level 1
+         :cleric-level 1
+         :description "This spell creates a light equal to torchlight which illuminates a 30' radius area (and provides dim light for an additional 20') around the target location or object. The effect is immobile if cast into an area, but it can be cast on a movable object. Light taken into an area of magical darkness does not function.
+Reversed, light becomes darkness, creating an area of darkness just as described above. This darkness blocks out Darkvision and negates mundane light sources.
+A light spell may be cast to counter and dispel the darkness spell of an equal or lower level caster (and vice versa). Doing so causes both spells to instantly cease, restoring the existing ambient light level.
+Either version of this spell may be used to blind an opponent by means of casting it on the target's ocular organs. The target is allowed a saving throw vs. Death Ray to avoid the effect, and if the save is made, the spell does not take effect at all. A light or darkness spell cast to blind does not have the given area of effect (that is, no light or darkness is shed around the victim)."
+         :inverse :darkness}]

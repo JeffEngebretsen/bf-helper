@@ -1,0 +1,6 @@
+[:magic-missle {:name "Magic Missle"
+                :range "100'+10'/level"
+                :duration "instantaneous"
+                :magic-user-level 1
+                :description "This spell causes a missile of magical energy to dart forth from the caster's fingertip and strike its target, dealing 1d6+1 points of damage. The missile strikes unerringly, even if the target is in melee combat or has less than total cover or total concealment. Specific parts of a creature can’t be singled out. Inanimate objects are not damaged by the spell.
+For every three caster levels beyond 1st, an additional missile is fired – two at 4th level, three at 7th, four at 10th, and the maximum of five missiles at 13th level or higher. If the caster fires multiple missiles, he or she can target a single creature or several creatures. A single missile can strike only one creature. Targets must be designated before damage is rolled."}]

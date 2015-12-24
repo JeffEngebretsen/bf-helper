@@ -1,0 +1,5 @@
+[:fighter {:name "Fighter"
+           :requirement [:str >= 9]
+           :hit-die 8
+           :weapons :any
+           :armor [:any :shield]}]

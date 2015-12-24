@@ -1,0 +1,9 @@
+[:elf {:name "Elf"
+       :requirement [[:int >= 9]
+                     [:con <= 17]]
+       :classes [:cleric :fighter :thief :magic-user :fighter+magic-user :thief+magic-user]
+       :hit-die 6
+       :saving-throws {:magic-wands 4
+                       :paralysis 4
+                       :spells 4}
+       :languages [:common :elvish]}]

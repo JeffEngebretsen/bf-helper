@@ -1,0 +1,5 @@
+[:magic-user {:name "Magic-User"
+              :requirement [:int >= 9]
+              :hit-die 4
+              :weapons [:cudgel :dagger :walking-stalf]
+              :armor [:none]}]

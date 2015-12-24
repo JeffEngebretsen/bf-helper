@@ -1,0 +1,6 @@
+[:cleric {:name "Cleric"
+          :requirement [:wis >= 9]
+          :hit-die 6
+          :weapons [:blunt]
+          :armor [:any :shield]
+          :special-abilities [:turn-undead]}]

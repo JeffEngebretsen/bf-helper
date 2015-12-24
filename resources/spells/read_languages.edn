@@ -1,0 +1,9 @@
+[:read-languages {:name "Read Languages"
+                  :range 0
+                  :duration "special"
+                  :magic-user-level 1
+                  :description "This spell grants the caster the ability to read almost any written language. It may be cast in one of three modes:
+In the first mode, the spell allows the caster to read any number of written works in a variety of languages. This mode lasts for 1 turn per caster level.
+In the second mode, the spell allows the caster to read any one book or tome; this mode lasts 3 hours per caster level.
+In the third mode, the spell allows the caster to read any one scroll (other than a spell scroll; for instance, a protection scroll or a treasure map); this mode is permanent.
+The spell grants the ability to read the texts, but does not in any way hasten the reading nor grant understanding of concepts the caster doesn't otherwise have the ability to understand. Also, for this spell to function, there must be at least one living creature that can read the given language somewhere on the same plane."}]

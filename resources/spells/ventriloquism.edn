@@ -1,0 +1,5 @@
+[:ventriloquism {:name "Ventriloquism"
+                 :range "60'"
+                 :duration "1 turn/level"
+                 :magic-user-level 1
+                 :description "This spell allows the caster to cause his or her voice to sound from someplace else within range, for example, from a dark alcove or statue."}]

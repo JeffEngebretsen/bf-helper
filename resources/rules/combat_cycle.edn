@@ -1,0 +1,3 @@
+[:combat-cycle {:name "Combat Cycle"
+                :description "1. Roll Initiative. Roll 1d6 and add any bonuses or penalties, including DEX bonus, -1 if deafened, and -2 if blinded.
+2. Act in initiative order. Characters who have the same initiative number act simultaneously. A character can delay his action until another character acts, acting simultaneously with them."}]

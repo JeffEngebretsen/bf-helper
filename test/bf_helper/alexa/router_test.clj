@@ -1,15 +1,10 @@
-(ns bf-helper.intent-router-test
+(ns bf-helper.alexa.router-test
   (:require [clojure.test :refer :all]
-            [bf-helper.intent-router :as r])
+            [bf-helper.alexa.router :as r]
+            [bf-helper.alexa.speechlet])
   (:import [com.amazon.speech.slu Slot]))
 
 (def not-nil? (complement nil?))
-
-(deftest can-convert-slots-to-map
-  (is (= {:race :elf} (r/slots->map {"Race" (-> (Slot/builder)
-                                            (.withName "Race")
-                                            (.withValue "Elf")
-                                            (.build))}))))
 
 (deftest can-create-race-character
   (is (not-nil?
@@ -37,5 +32,3 @@
                                                             (.build))})
            (.getOutputSpeech)
            (.getText)))))
-
-(run-tests)

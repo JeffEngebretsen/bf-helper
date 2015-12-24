@@ -1,14 +1,26 @@
-(ns bf-helper.formatter)
+(ns bf-helper.alexa.util.formatter)
 
-(load "data/strings")
+(load "/bf_helper/alexa/res/strings")
+
+(defn article
+  [noun]
+  (if ((set "aeiou") (first noun)) "an" "a"))
 
 (defn character-race-class
   [c]
-  (format "You're %s %s.\n" (strings (:race c)) (strings (:class c))))
+  (format "%s %s" (strings (:race c)) (strings (:class c))))
+
+(defn character-race
+  [c]
+  (strings (:race c)))
+
+(defn character-class
+  [c]
+  (strings (:class c)))
 
 (defn character
   [c]
-  (str (character-race-class c)
+  (str (format "You're %s %s.\n" (article (strings (:race c))) (character-race-class c))
        (let [as (:ability-scores c)]
          (format "Your ability scores are:\n  Strength %d\n  Dexterity %d\n  Constitution %d\n  Inteligence %d\n  Wisdom %d\n  Charisma %d\n\n"
                  (as :str) (as :dex) (as :con) (as :int) (as :wis) (as :cha)))

@@ -1,7 +1,13 @@
-(ns bf-helper.gen-character-test
+(ns bf-helper.character-generator-test
   (:require [clojure.test :refer :all]
-            [bf-helper.gen-character :refer :all]
+            [bf-helper.character-generator :refer :all]
             [clojure.data.generators :as gen]))
+
+(deftest roll-ability-test
+  (testing "Can roll an ability"
+    (binding [gen/*rnd* (java.util.Random. 42)]
+      (let [x (roll 3 6)]
+        (is (= x 12))))))
 
 (deftest populate-abilties-test
   (testing "Can populate abilities with values"
@@ -17,20 +23,21 @@
 
 (deftest filter-valid-races-test
   (testing "Can filter out invalid races"
-    (is (and (= #{:human :elf :halfling :dwarf}
-                (set (filter-races {:str 10
-                                    :dex 10
-                                    :con 10
-                                    :int 10
-                                    :wis 10
-                                    :cha 10})))
-             (= #{:halfling :elf :human}
-                (set (filter-races {:str 10
-                                    :dex 10
-                                    :con 10
-                                    :int 10
-                                    :wis 10
-                                    :cha 18})))))))
+    (are [x y] (= x y)
+         #{:human :elf :halfling :dwarf}
+         (set (filter-races {:str 10
+                             :dex 10
+                             :con 10
+                             :int 10
+                             :wis 10
+                             :cha 10}))
+         #{:halfling :elf :human}
+         (set (filter-races {:str 10
+                             :dex 10
+                             :con 10
+                             :int 10
+                             :wis 10
+                             :cha 18})))))
 
 (deftest filter-valid-classes-test
   (testing "Can filter out invalid classes"
@@ -108,6 +115,3 @@
 
 (deftest can-handle-invalid-race
     (is (nil? (make-character-race :gnome))))
-
-(run-tests)
-;(map #(ns-unmap *ns* %) (keys (ns-interns *ns*)))

@@ -1,0 +1,5 @@
+[:combat {:name "Combat"
+          :description "When the party encounters potential enemies, the time scale shifts from 10-minute-long turns to 10-second-long combat rounds. The phases of combat are:
+1. Check for surprise (GM option)
+2. Check monster reaction (GM option)
+3. Combat cycle"}]

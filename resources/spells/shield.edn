@@ -1,0 +1,5 @@
+[:shield {:name "Shield"
+          :range "self"
+          :duration "5 rounds+1/level"
+          :magic-user-level 1
+          :description "Shield creates an invisible, shield-like mobile disk of force that hovers in front of the caster. It negates magic missile attacks directed at the caster, and improves the caster's Armor Class by +3 vs. melee attacks and +6 vs. missile weapons. The Armor Class benefits do not apply to attacks originating from behind the caster, but magic missiles are warded off from all directions."}]

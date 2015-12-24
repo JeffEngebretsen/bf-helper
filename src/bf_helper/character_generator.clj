@@ -1,11 +1,21 @@
-(ns bf-helper.gen-character
+(ns bf-helper.character-generator
   (:require [clojure.string :as str]
-            [bf-helper.dice :refer :all]
-            [clojure.data.generators :as gen]))
+            [clojure.data.generators :as gen]
+            [bf-helper.data :refer :all]))
 
-(load "data/races")
-(load "data/classes")
+(defrecord BfRace [name requirement classes hit-die saving-throws languages])
+(defrecord BfClass [name requirement hit-die weapons armor special-abilities])
+(defrecord BfCharacter [class race ability-scores ability-modifiers race-abilities class-abilities exp-needed hit-points attack-bonus saving-throws money])
+
+(def races (load-res "races/" map->BfRace))
+(def classes (load-res "classes/" map->BfClass))
+
 (load "data/character_tables")
+
+(defn roll
+  "Roll an s sided die n times."
+  [n s]
+  (reduce + (take n (repeatedly #(+ 1 (gen/uniform 0 s))))))
 
 (defn make-abilities
   "Roll ability scores for all characteristics.
@@ -21,12 +31,11 @@
   "Checks the supplied ability scores to the requirements
   for each race returning a list of valid races."
   ([abilities] (filter-races races abilities))
-  ([races abilities]
-  (keys (filter (fn [[race data]]
-                  (every? true? (for [requirement (data :requirement)
-                                      :let [[ab f n] requirement]]
-                                  (f (abilities ab) n))))
-                races))))
+  ([races abilities] (keys (filter (fn [[race data]]
+                                     (every? true? (for [requirement (:requirement data)
+                                                         :let [[ab f n] requirement]]
+                                                     ((resolve f) (abilities ab) n))))
+                                   races))))
 
 (defn filter-races-by-class
   "Retrns all the races for which clazz is a valid option"
@@ -45,7 +54,7 @@
   [abilities race]
   (filter (fn [a-class]
             (let [[ab f n] (:requirement (a-class classes))]
-              (f (abilities ab) n)))
+              ((resolve f) (abilities ab) n)))
           (remove-combos (get-in races [race :classes]))))
 
 (defn- get-combo-classes
@@ -105,7 +114,7 @@
     (let [[ab f n] (get-in classes [clazz :requirement])
         valid-races (get-stats-for-races (filter-races-by-class clazz))]
     (loop [ability-scores (make-abilities)]
-      (if (f (ab ability-scores) n)
+      (if ((resolve f) (ab ability-scores) n)
         (make-character :ability-scores ability-scores
                         :clazz clazz
                         :race (gen/rand-nth (filter-races valid-races ability-scores)))

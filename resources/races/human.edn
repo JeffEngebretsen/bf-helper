@@ -1,0 +1,4 @@
+[:human {:name "Human"
+         :classes [:cleric :fighter :thief :magic-user]
+         :hit-die :any
+         :languages [:common]}]
