@@ -4,7 +4,8 @@
             [bf-helper.alexa.routes.create-character-router]
             [bf-helper.alexa.routes.create-class-character-router]
             [bf-helper.alexa.routes.create-race-character-router]
-            [bf-helper.alexa.routes.lookup-spell-router])
+            [bf-helper.alexa.routes.lookup-spell-router]
+            [bf-helper.alexa.routes.lookup-rule-router])
   (:import (com.amazon.speech.ui PlainTextOutputSpeech Reprompt)
            (com.amazon.speech.speechlet SpeechletResponse IntentRequest)
            (com.amazon.speech.slu Intent))

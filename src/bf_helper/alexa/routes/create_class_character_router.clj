@@ -8,11 +8,6 @@
   (:import (com.amazon.speech.ui PlainTextOutputSpeech SimpleCard)
            (com.amazon.speech.speechlet SpeechletResponse)))
 
-(def str->class {"cleric" :cleric
-              "fighter" :fighter
-              "magic user" :magic-user
-              "thief" :thief})
-
 (defn- bundle-character
   [c]
   (let [speech (doto (new PlainTextOutputSpeech)
@@ -35,6 +30,6 @@
   [_ slots]
   (binding [gen/*rnd* (java.util.Random.)]
     (let [clazz (slot/get slots "Class")]
-      (if-let [character (c-gen/make-character-class (str->class clazz))]
+      (if-let [character (c-gen/make-character-class (slot/str->keyword clazz))]
         (bundle-character character)
         (error-response clazz)))))

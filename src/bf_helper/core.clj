@@ -9,9 +9,14 @@
 (set! *warn-on-reflection* true)
 
 (defrecord BfSpell [name range duration magic-user-level cleric-level description inverse])
-(defrecord BfRule [name description])
+(defrecord BfRule [name description other-names])
 
-(def spells (load-res "spells/" map->BfSpell))
+(def spells (let [spells (load-res "spells/" map->BfSpell)]
+              (merge spells
+                     (into {} (map (fn [[k v]]
+                            [(:inverse v) v])
+                          (filter #(:inverse (second %)) spells))))))
+
 (def rules (load-res "rules/" map->BfRule))
 
 (defn -main []

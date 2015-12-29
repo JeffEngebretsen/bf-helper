@@ -1,4 +1,6 @@
-(ns bf-helper.alexa.util.formatter)
+(ns bf-helper.alexa.util.formatter
+  (:refer-clojure :rename {range core-range})
+  (:require [clojure.string :as str]))
 
 (load "/bf_helper/alexa/res/strings")
 
@@ -40,3 +42,6 @@
          (format "You have the class ability \"%s\".\n" (strings (first ab))))
        (format "Your attack bonus is %d.\n" (c :attack-bonus))
        (format "You have %d gold." (c :money))))
+
+(defn range [s]
+  (str/replace s #"'" " feet"))

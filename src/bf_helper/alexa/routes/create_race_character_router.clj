@@ -8,11 +8,6 @@
   (:import (com.amazon.speech.ui PlainTextOutputSpeech SimpleCard)
            (com.amazon.speech.speechlet SpeechletResponse)))
 
-(def str->race {"dwarf" :dwarf
-            "halfling" :halfling
-            "elf" :elf
-            "human" :human})
-
 (defn- bundle-character
   [c]
   (let [speech (doto (new PlainTextOutputSpeech)
@@ -35,6 +30,6 @@
   [_ slots]
   (binding [gen/*rnd* (java.util.Random.)]
     (let [race (slot/get slots "Race")]
-      (if-let [character (c-gen/make-character-race (str->race race))]
+      (if-let [character (c-gen/make-character-race (slot/str->keyword race))]
         (bundle-character character)
         (error-response race)))))

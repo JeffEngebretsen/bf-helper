@@ -1,0 +1,2 @@
+[:set-weapon-against-charge {:name "Set Weapon Against Charge"
+                             :description "Spears, pole arms, and certain other piercing weapons deal double damage when “set” (braced against the ground or floor) and used against a charging creature. For this to be done, the character or creature being charged must have equal or better Initiative; this counts as holding an action: both attacker and defender act on the attacker's Initiative number and are therefore simultaneous."}]

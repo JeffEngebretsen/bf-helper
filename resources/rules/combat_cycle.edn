@@ -1,3 +1,6 @@
 [:combat-cycle {:name "Combat Cycle"
                 :description "1. Roll Initiative. Roll 1d6 and add any bonuses or penalties, including DEX bonus, -1 if deafened, and -2 if blinded.
-2. Act in initiative order. Characters who have the same initiative number act simultaneously. A character can delay his action until another character acts, acting simultaneously with them."}]
+2. Act in initiative order. Characters who have the same initiative number act simultaneously. A character can delay his action until another character acts, acting simultaneously with them.
+On their turn, individuals may move and then attack (in that order), just move, or just attack. An attack ends the character's turn.
+Continue this cycle until the combat is resolved.
+A character using a weapon with a long reach (spears, for instance) may choose to attack a closing opponent on the closing opponent's number and thus attack simultaneously with the opponent, even if the attacker rolled lower for Initiative."}]
