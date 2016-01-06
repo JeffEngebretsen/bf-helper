@@ -9,7 +9,7 @@
 
 (defmethod route "LookupSpellIntent"
   [_ slots]
-  (let [spell-key (slot/get slots "Spell")]
+  (if-let [spell-key (slot/get slots "Spell")]
     (if-let [spell (spells (slot/str->keyword spell-key))]
       (SpeechletResponse/newTellResponse
        (doto (new PlainTextOutputSpeech)
@@ -25,4 +25,7 @@
       (SpeechletResponse/newTellResponse
        (doto (new PlainTextOutputSpeech)
          (.setText (format "I'm still learning this gaming system. Try asking about the spell %s again later."
-                           spell-key)))))))
+                           spell-key)))))
+    (SpeechletResponse/newTellResponse
+       (doto (new PlainTextOutputSpeech)
+         (.setText "I'm sorry. I don't know how to do that.")))))

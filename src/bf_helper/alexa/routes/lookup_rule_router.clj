@@ -7,7 +7,7 @@
 
 (defmethod route "LookupRuleIntent"
   [_ slots]
-  (let [rule-key (slot/get slots "Rule")]
+  (if-let [rule-key (slot/get slots "Rule")]
     (if-let [rule (rules (slot/str->keyword rule-key))]
       (SpeechletResponse/newTellResponse
        (doto (PlainTextOutputSpeech.)
@@ -18,4 +18,7 @@
       (SpeechletResponse/newTellResponse
        (doto (new PlainTextOutputSpeech)
          (.setText (format "I'm still learning this gaming system. Try asking about %s again later."
-                           rule-key)))))))
+                           rule-key)))))
+    (SpeechletResponse/newTellResponse
+       (doto (new PlainTextOutputSpeech)
+         (.setText "I'm sorry. I don't know how to do that.")))))

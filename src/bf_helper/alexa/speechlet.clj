@@ -5,9 +5,10 @@
             [bf-helper.alexa.routes.create-class-character-router]
             [bf-helper.alexa.routes.create-race-character-router]
             [bf-helper.alexa.routes.lookup-spell-router]
-            [bf-helper.alexa.routes.lookup-rule-router])
+            [bf-helper.alexa.routes.lookup-rule-router]
+            [bf-helper.alexa.routes.amazon-router])
   (:import (com.amazon.speech.ui PlainTextOutputSpeech Reprompt)
-           (com.amazon.speech.speechlet SpeechletResponse IntentRequest)
+           (com.amazon.speech.speechlet SpeechletResponse IntentRequest SpeechletException)
            (com.amazon.speech.slu Intent))
   (:gen-class
    :main false
@@ -23,17 +24,29 @@
   (log/info "Speechlet onLaunch")
   (SpeechletResponse/newAskResponse
    (doto (new PlainTextOutputSpeech)
-     (.setText "Welcome to B.F. Helper. I can do things like roll a character, a thief, or an elf. ... Now, what can I do for you?"))
+     (.setText "Welcome to B F Helper. I can do things like roll a character or lookup a spell or rule. ... Now, what can I do for you?"))
    (doto (new Reprompt)
      (.setOutputSpeech (doto (new PlainTextOutputSpeech)
                          (.setText "What can I do for you? ... For help you can say, please help me."))))))
 
 (defn speechlet-onIntent [this request session]
-  (let [intent (.getIntent ^IntentRequest request)
-        i-name  (.getName ^Intent intent)
-        i-slots (.getSlots ^Intent intent)]
-    (log/info (apply str (interpose " " ["Speechlet.onIntent" i-name i-slots])))
-    (r/route i-name i-slots)))
+  (log/info "Speechlet.onIntent")
+  (if-let [intent (.getIntent ^IntentRequest request)]
+    (let [i-name  (.getName ^Intent intent)
+          i-slots (.getSlots ^Intent intent)]
+      (log/info (str "Intent " i-name))
+      (if i-slots
+        (log/info (apply str (interpose " " (map #(format "%s: %s" (key %) (.getValue (val %))) i-slots)))))
+      (r/route i-name i-slots))
+    (throw (SpeechletException. "No intent"))))
 
 (defn speechlet-onSessionEnded [this request session]
   (log/info "Speechlet onSessionEnded"))
+
+
+
+
+
+
+
+

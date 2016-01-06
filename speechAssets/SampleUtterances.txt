@@ -22,20 +22,21 @@ CreateClassCharacterIntent roll an {Class}
 CreateClassCharacterIntent roll a new {Class}
 
 LookupSpellIntent how does {Spell} work
+LookupSpellIntent how {Spell} works
+LookupSpellIntent tell me how {Spell} works
 LookupSpellIntent tell me about {Spell}
+LookupSpellIntent explain how {Spell} works
 LookupSpellIntent explain {Spell}
 LookupSpellIntent what is {Spell}
 LookupSpellIntent what's {Spell}
 LookupSpellIntent define {Spell}
-LookupSpellIntent {Spell}
+LookupSpellIntent the spell {Spell}
+LookupSpellIntent spell {Spell}
+LookupSpellIntent about {Spell}
 
 LookupRuleIntent how does {Rule} work
 LookupRuleIntent tell me about {Rule}
 LookupRuleIntent explain {Rule}
-LookupRuleIntent {Rule}
-
-LookupSaveIntent {Save} {Level} {Class}
-LookupSaveIntent what is the save vs. {Save} for a level {Level} {Class}
-LookupSaveIntent what's the save vs. {Save} for a level {Level} {Class}
-LookupSaveIntent what is save vs. {Save} for a level {Level} {Class}
-LookupSaveIntent what's save vs. {Save} for a level {Level} {Class}
+LookupRuleIntent the rule {Rule}
+LookupRuleIntent rule {Rule}
+LookupRuleIntent about {Rule}

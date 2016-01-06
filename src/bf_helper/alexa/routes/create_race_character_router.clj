@@ -11,7 +11,7 @@
 (defn- bundle-character
   [c]
   (let [speech (doto (new PlainTextOutputSpeech)
-                  (.setText (format "I rolled up Your %s. I sent you a card with the stats." (:name c))))
+                  (.setText (format "I rolled up your %s. I sent you a card with the stats." (formatter/character-race c))))
         card   (doto (new SimpleCard)
                   (.setTitle "Your character:")
                   (.setContent (formatter/character c)))]
@@ -29,7 +29,10 @@
 (defmethod route "CreateRaceCharacterIntent"
   [_ slots]
   (binding [gen/*rnd* (java.util.Random.)]
-    (let [race (slot/get slots "Race")]
+    (if-let [race (slot/get slots "Race")]
       (if-let [character (c-gen/make-character-race (slot/str->keyword race))]
         (bundle-character character)
-        (error-response race)))))
+        (error-response race))
+    (SpeechletResponse/newTellResponse
+       (doto (new PlainTextOutputSpeech)
+         (.setText "I'm sorry. I don't know how to do that."))))))
