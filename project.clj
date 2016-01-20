@@ -22,5 +22,4 @@
                  [org.apache.commons/commons-lang3 "3.0"]]
   :target-path "target/%s"
   :main bf-helper.core
-  :handler bf-helper.alexa.handler
   :profiles {:uberjar {:aot :all}})

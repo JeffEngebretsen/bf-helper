@@ -1,8 +1,7 @@
-(ns bf-helper.alexa.util.formatter
+(ns alexa.util.formatter
   (:refer-clojure :rename {range core-range})
-  (:require [clojure.string :as str]))
-
-(load "/bf_helper/alexa/res/strings")
+  (:require [clojure.string :as str]
+            [alexa.res.strings :refer :all]))
 
 (defn article
   [noun]

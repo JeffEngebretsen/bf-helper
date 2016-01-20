@@ -1,3 +1,5 @@
+(ns alexa.res.strings)
+
 (def strings {:dwarf "dwarven"
               :halfling "halfling"
               :elf "elven"

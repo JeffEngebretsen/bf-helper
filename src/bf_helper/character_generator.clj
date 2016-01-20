@@ -1,7 +1,8 @@
 (ns bf-helper.character-generator
   (:require [clojure.string :as str]
             [clojure.data.generators :as gen]
-            [bf-helper.data :refer :all]))
+            [bf-helper.data :refer :all]
+            [bf-helper.data.character-tables :refer :all]))
 
 (defrecord BfRace [name requirement classes hit-die saving-throws languages])
 (defrecord BfClass [name requirement hit-die weapons armor special-abilities])
@@ -31,7 +32,7 @@
   "Checks the supplied ability scores to the requirements
   for each race returning a list of valid races."
   ([abilities] (filter-races races abilities))
-  ([races abilities] (keys (filter (fn [[race data]]
+  ([races abilities] (keys (filter (fn [[_ data]]
                                      (every? true? (for [requirement (:requirement data)
                                                          :let [[ab f n] requirement]]
                                                      ((resolve f) (abilities ab) n))))

@@ -1,7 +1,13 @@
 {
   "intents": [
     {
-      "intent": "CreateCharacterIntent"
+      "intent": "CreateCharacterIntent",
+      "slots": [
+        {
+          "name" : "Character",
+          "type": "LIST_OF_CHARACTERS"
+        }
+      ]
     },
     {
       "intent": "CreateRaceCharacterIntent",
@@ -36,23 +42,6 @@
         {
           "name" : "Rule",
           "type": "LIST_OF_RULES"
-        }
-      ]
-    },
-    {
-      "intent" : "LookupSaveIntent",
-      "slots" : [
-        {
-          "name" : "Save",
-          "type" : "LIST_OF_SAVES"
-        },
-        {
-          "name" : "Level",
-          "type" : "AMAZON.NUMBER"
-        },
-        {
-          "name" : "Class",
-          "type" : "LIST_OF_CLASSES"
         }
       ]
     },

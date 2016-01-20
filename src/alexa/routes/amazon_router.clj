@@ -1,5 +1,5 @@
-(ns bf-helper.alexa.routes.amazon-router
-  (:require [bf-helper.alexa.router :refer :all])
+(ns alexa.routes.amazon-router
+  (:require [alexa.router :refer :all])
   (:import (com.amazon.speech.ui PlainTextOutputSpeech Reprompt)
            (com.amazon.speech.speechlet SpeechletResponse)))
 
