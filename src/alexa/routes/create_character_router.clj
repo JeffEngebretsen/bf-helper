@@ -9,7 +9,7 @@
 (defn- make-character []
   (binding [gen/*rnd* (Random.)]
         (let [character (c-gen/make-character)]
-          {:text (format "I rolled up Your %s. I sent you a card with the stats."
+          {:text (format "I rolled up your %s. I sent you a card with the stats."
                          (formatter/character-race-class character))
            :card {:title "Your character:"
                   :content (formatter/character character)}})))

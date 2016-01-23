@@ -1,4 +1,4 @@
-(defproject bf_helper "1.3.2"
+(defproject bf_helper "1.3.1"
   :description "An Alexa Skill to help Basic Fantasy RPG players with various tasks involved in setting up characters and navigating rules."
   :url "https://github.com/JeffEngebretsen/bf-helper"
   :license {:name "The MIT License"
@@ -10,7 +10,7 @@
                  [org.clojure/data.generators "0.1.2"]
 
                  ;Amazon
-                 [com.amazonaws/aws-lambda-java-core "1.1.0"]
+                 [com.amazonaws/aws-lambda-java-core "1.0.0"]
                  [alexa-skills-kit/alexa-skills-kit "1.1"]
                  [com.fasterxml.jackson.core/jackson-core "2.6.3"]
                  [com.fasterxml.jackson.core/jackson-databind "2.6.3"]
@@ -22,4 +22,4 @@
                  [org.apache.commons/commons-lang3 "3.0"]]
   :target-path "target/%s"
   :main bf-helper.core
-  :aot :all)
+  :profiles {:uberjar {:aot :all}})

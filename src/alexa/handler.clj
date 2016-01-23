@@ -11,4 +11,4 @@
 
 (defn -init []
   (log/debug "Handler called")
-  [[(speechlet.) #{}]])
+  [[(speechlet.) #{"amzn1.echo-sdk-ams.app.06cf0646-0133-4345-8205-3b35a326568d"}]])

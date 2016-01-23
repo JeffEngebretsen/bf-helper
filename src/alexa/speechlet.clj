@@ -11,9 +11,9 @@
            (com.amazon.speech.speechlet SpeechletResponse IntentRequest SpeechletException)
            (com.amazon.speech.slu Intent Slot))
   (:gen-class
-   :main false
-   :implements [com.amazon.speech.speechlet.Speechlet]
-   :prefix "speechlet-"))
+    :main false
+    :implements [com.amazon.speech.speechlet.Speechlet]
+    :prefix "speechlet-"))
 
 (set! *warn-on-reflection* true)
 
@@ -31,27 +31,52 @@
     (log/info request)
     (r/route request)))
 
+(defn- plain-text-output-speech [result]
+  (doto (PlainTextOutputSpeech.)
+    (.setText (:text result))))
+
+(defn- simple-card [result]
+  (doto (SimpleCard.)
+    (.setTitle (get-in result [:card :title]))
+    (.setContent (get-in result [:card :content]))))
+
+(defn- reprompt [result]
+  (doto (Reprompt.)
+    (.setOutputSpeech
+      (doto
+        (PlainTextOutputSpeech.)
+        (.setText (:reprompt result))))))
+
+(defn- bundle-card-response [result]
+  (SpeechletResponse/newTellResponse
+    (plain-text-output-speech result)
+    (simple-card result)))
+
+(defn- bundle-tell-response [result]
+  (SpeechletResponse/newTellResponse
+    (plain-text-output-speech result)))
+
+(defn- bundle-ask-response [result]
+  (SpeechletResponse/newAskResponse
+    (plain-text-output-speech result)
+    (reprompt result)))
+
 (defn- bundle-result [result]
-  (let [speech (doto (new PlainTextOutputSpeech)
-                 (.setText (:text result)))]
-    (when (:card result)
-      (let [card (doto (new SimpleCard)
-                   (.setTitle (get-in result [:card :title]))
-                   (.setContent (get-in result [:card :content])))]
-        (SpeechletResponse/newTellResponse speech card)))
-    ((SpeechletResponse/newTellResponse speech))))
+  (cond
+    (result :card)
+    (bundle-card-response result)
+    (result :reprompt)
+    (bundle-ask-response result)
+    :else
+    (bundle-tell-response result)))
 
 (defn speechlet-onSessionStarted [this request session]
   (log/info "Speechlet onSessionStart"))
 
 (defn speechlet-onLaunch [this request session]
   (log/info "Speechlet onLaunch")
-  (SpeechletResponse/newAskResponse
-   (doto (new PlainTextOutputSpeech)
-     (.setText "Welcome to B F Helper. I can do things like roll a character or lookup a spell or rule. ... Now, what can I do for you?"))
-   (doto (new Reprompt)
-     (.setOutputSpeech (doto (new PlainTextOutputSpeech)
-                         (.setText "What can I do for you? ... For help you can say, please help me."))))))
+  (bundle-ask-response {:text "Welcome to B F Helper. I can do things like roll a character or lookup a spell or rule. ... Now, what can I do for you?"
+                        :reprompt "What can I do for you? ... For help you can say, please help me."}))
 
 (defn speechlet-onIntent [this request session]
   (log/info "Speechlet.onIntent")

@@ -12,4 +12,5 @@
               :content (:description rule)}}
       {:text (format "I'm still learning this gaming system. Try asking about %s again later."
                            rule-key)})
-    {:text "I'm sorry. I don't know how to do that."}))
+    {:text "What rule do you want me to tell you about?"
+     :reprompt "What rule do you want me to tell you about? For example, you can say 'running'"}))

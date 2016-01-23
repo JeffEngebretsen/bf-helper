@@ -19,4 +19,5 @@
         {:text (format "I'm sorry, I don't know how to make %s %s."
                        (formatter/article race)
                        race)})
-      {:text "I'm sorry. I don't know how to do that."})))
+      {:text "What race would you like the character?"
+       :reprompt "What race would you like the character? For example you can say 'dwarf'"})))

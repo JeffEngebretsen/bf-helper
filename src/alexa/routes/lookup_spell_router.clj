@@ -22,4 +22,5 @@
               :content (make-card spell)}}
       {:text (format "I'm still learning this gaming system. Try asking about the spell %s again later."
                            spell-key)})
-    {:text "I'm sorry. I don't know how to do that."}))
+    {:text "What spell would you like me to look up?"
+     :reprompt "Whate spell would you like me to look up? For example you can ask for 'charm person'."}))

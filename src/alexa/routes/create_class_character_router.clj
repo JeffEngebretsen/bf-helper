@@ -19,4 +19,5 @@
         {:text (format "I'm sorry, I don't know how to make %s %s."
                        (formatter/article clazz)
                        clazz)})
-      {:text "I'm sorry. I don't know how to do that."})))
+      {:text "What class do you want?"
+       :reprompt "What class do you want? For example you can say 'cleric'."})))
